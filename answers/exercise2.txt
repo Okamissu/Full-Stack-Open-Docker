@@ -1,0 +1,48 @@
+╭─okamisu@okamisu-kubuntu ~/Coding/Full-Stack-Open-Docker/answers ‹main› 
+╰─$ docker run -it ubuntu bash
+
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+d9b985643753: Pull complete 
+09923199ca0e: Pull complete 
+aff80cac5bd2: Download complete 
+Digest: sha256:cd21a4f68a617580279d4b091cb18e3af9fa8a87500665f0ae5f7f757d17d367
+Status: Downloaded newer image for ubuntu:latest
+root@26f39d79323f:/# ls -la
+total 60
+drwxr-xr-x   1 root root 4096 Sep 17 13:21 .
+drwxr-xr-x   1 root root 4096 Sep 17 13:21 ..
+-rwxr-xr-x   1 root root    0 Sep 17 13:21 .dockerenv
+drwxr-xr-x   2 root root 4096 Sep 12 10:25 .rock
+lrwxrwxrwx   1 root root    7 Apr 20 08:46 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 20 08:46 boot
+drwxr-xr-x   5 root root  360 Sep 17 13:21 dev
+drwxr-xr-x   1 root root 4096 Sep 17 13:21 etc
+drwxr-xr-x   3 root root 4096 Sep 12 10:25 home
+lrwxrwxrwx   1 root root    7 Apr 20 08:46 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Apr 20 08:46 lib64 -> usr/lib64
+drwxr-xr-x   2 root root 4096 Sep 12 10:24 media
+drwxr-xr-x   2 root root 4096 Sep 12 10:24 mnt
+drwxr-xr-x   2 root root 4096 Sep 12 10:24 opt
+dr-xr-xr-x 470 root root    0 Sep 17 13:21 proc
+drwx------   2 root root 4096 Sep 12 10:25 root
+drwxr-xr-x   4 root root 4096 Sep 12 10:25 run
+lrwxrwxrwx   1 root root    8 Apr 20 08:46 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4096 Sep 12 10:24 srv
+dr-xr-xr-x  13 root root    0 Sep 17 13:21 sys
+drwxrwxrwt   2 root root 4096 Sep 12 10:25 tmp
+drwxr-xr-x  12 root root 4096 Sep 12 10:24 usr
+drwxr-xr-x  11 root root 4096 Sep 12 10:25 var
+root@26f39d79323f:/# mkdir usr/
+bin/     games/   include/ lib/     lib64/   libexec/ local/   sbin/    share/   src/     
+root@26f39d79323f:/# mkdir usr/src/app
+root@26f39d79323f:/# touch usr/src/app/index.js
+root@26f39d79323f:/# ls -la usr/src/app/
+total 8
+drwxr-xr-x 2 root root 4096 Sep 17 13:22 .
+drwxr-xr-x 1 root root 4096 Sep 17 13:21 ..
+-rw-r--r-- 1 root root    0 Sep 17 13:22 index.js
+root@26f39d79323f:/# exit
+exit
+╭─okamisu@okamisu-kubuntu ~/Coding/Full-Stack-Open-Docker/answers ‹main› 
+╰─$ 

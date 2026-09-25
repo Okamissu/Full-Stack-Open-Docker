@@ -1,6 +1,6 @@
 services:
   mongo:
-    image: mongo
+    image: mongo:6.0
     ports:
       - 3456:27017
     environment:
@@ -9,3 +9,7 @@ services:
       MONGO_INITDB_DATABASE: the_database
     volumes:
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

@@ -1,0 +1,34 @@
+ ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                       31s  10:38:20
+❯ docker exec -it todo-backend-redis-1 sh  
+/data # redis-cli
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> GET added_todos
+"1"
+127.0.0.1:6379> SET added_todos 9001
+OK
+127.0.0.1:6379> 
+/data # 
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-redis-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+ ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                    1m 10s  10:40:32
+❯ curl http://localhost:3000/statistics
+{"added_todos":9002}%                                                                                   ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                             10:40:40
+❯ docker exec -it todo-backend-redis-1 sh
+/data # redis-cli
+127.0.0.1:6379> DEL added_todos
+(integer) 1
+127.0.0.1:6379> KEYS *
+(empty array)
+127.0.0.1:6379> 
+/data # 
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-redis-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+ ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                       32s  10:41:22
+❯ curl http://localhost:3000/statistics  
+{"added_todos":1}%                                                                                      ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                             10:41:23
+❯ 

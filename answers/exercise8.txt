@@ -1,0 +1,150 @@
+ ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                             10:00:52
+❯ docker compose -f docker-compose.dev.yml up -d
+[+] up 3/3
+ ✔ Network todo-backend_default   Created                                                          0.0s
+ ✔ Volume todo-backend_mongo_data Created                                                          0.0s
+ ✔ Container todo-backend-mongo-1 Started                                                          0.3s
+ ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                             10:01:14
+❯ docker exec -it todo-backend-mongo-1 bash     
+root@f0c48cae509a:/# mongo
+bash: mongo: command not found
+root@f0c48cae509a:/# mongo
+mongod        mongoexport   mongoimport   mongos        mongostat     
+mongodump     mongofiles    mongorestore  mongosh       mongotop      
+root@f0c48cae509a:/# mongo
+mongod        mongoexport   mongoimport   mongos        mongostat     
+mongodump     mongofiles    mongorestore  mongosh       mongotop      
+root@f0c48cae509a:/# mongosh
+Current Mongosh Log ID: 6ab77c05e625c2f19f9df8a2
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.3
+Using MongoDB:          6.0.28
+Using Mongosh:          2.8.3
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+test> show dbs
+MongoServerError[Unauthorized]: command listDatabases requires authentication
+test> 
+root@f0c48cae509a:/# mongosh -u root -p example
+Current Mongosh Log ID: 6ab77c28ef33833b349df8a2
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.3
+Using MongoDB:          6.0.28
+Using Mongosh:          2.8.3
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-09-26T08:01:18.640+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-09-26T08:01:18.986+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+   2026-09-26T08:01:18.986+00:00: vm.max_map_count is too low
+------
+
+test> show dbs
+admin         100.00 KiB
+config         12.00 KiB
+local          72.00 KiB
+the_database   40.00 KiB
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6ab77bcd48074ef3a99df8a3'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6ab77bcd48074ef3a99df8a4'),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+the_database> db.todos.
+db.todos.__proto__                        db.todos.constructor
+db.todos.hasOwnProperty                   db.todos.isPrototypeOf
+db.todos.propertyIsEnumerable             db.todos.toLocaleString
+db.todos.toString                         db.todos.valueOf
+db.todos._aggregateAndScaleCollStats      db.todos._cachedSampleDocs
+db.todos._createIndexes                   db.todos._database
+db.todos._getAggregatedCollStats          db.todos._getLegacyCollStats
+db.todos._getSampleDocs                   db.todos._getSampleDocsForCompletion
+db.todos._getShardedCollectionInfo        db.todos._getSingleStorageStatValue
+db.todos._mongo                           db.todos._name
+db.todos.aggregate                        db.todos.analyzeShardKey
+db.todos.bulkWrite                        db.todos.checkMetadataConsistency
+db.todos.compactStructuredEncryptionData  db.todos.configureQueryAnalyzer
+db.todos.convertToCapped                  db.todos.count
+db.todos.countDocuments                   db.todos.createIndex
+db.todos.createIndexes                    db.todos.createSearchIndex
+db.todos.createSearchIndexes              db.todos.dataSize
+db.todos.deleteMany                       db.todos.deleteOne
+db.todos.distinct                         db.todos.drop
+db.todos.dropIndex                        db.todos.dropIndexes
+db.todos.dropSearchIndex                  db.todos.ensureIndex
+db.todos.estimatedDocumentCount           db.todos.exists
+db.todos.explain                          db.todos.find
+db.todos.findAndModify                    db.todos.findOne
+db.todos.findOneAndDelete                 db.todos.findOneAndReplace
+db.todos.findOneAndUpdate                 db.todos.getDB
+db.todos.getFullName                      db.todos.getIndexes
+db.todos.getIndexKeys                     db.todos.getIndexSpecs
+db.todos.getIndices                       db.todos.getMongo
+db.todos.getName                          db.todos.getPlanCache
+db.todos.getSearchIndexes                 db.todos.getShardDistribution
+db.todos.getShardLocation                 db.todos.getShardVersion
+db.todos.help                             db.todos.hideIndex
+db.todos.initializeOrderedBulkOp          db.todos.initializeUnorderedBulkOp
+db.todos.insert                           db.todos.insertMany
+db.todos.insertOne                        db.todos.isCapped
+db.todos.latencyStats                     db.todos.mapReduce
+db.todos.reIndex                          db.todos.remove
+db.todos.renameCollection                 db.todos.replaceOne
+db.todos.runCommand                       db.todos.stats
+db.todos.storageSize                      db.todos.totalIndexSize
+db.todos.totalSize                        db.todos.unhideIndex
+db.todos.update                           db.todos.updateMany
+db.todos.updateOne                        db.todos.updateSearchIndex
+db.todos.validate                         db.todos.watch
+
+the_database> db.todos.insertOne({ text:"Use mongo CLI", done: true})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ab77cb7ef33833b349df8a3')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6ab77bcd48074ef3a99df8a3'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6ab77bcd48074ef3a99df8a4'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('6ab77cb7ef33833b349df8a3'),
+    text: 'Use mongo CLI',
+    done: true
+  }
+]
+the_database> 
+root@f0c48cae509a:/# 
+exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-mongo-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+ ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                    3m 59s  10:05:56
+❯ curl http://localhost:3000/todos/6ab77cb7ef33833b349df8a3
+{"_id":"6ab77cb7ef33833b349df8a3","text":"Use mongo CLI","done":true}%                                  ~/Coding/Full-Stack-Open-Docker/todo-app/todo-backend   main                             10:06:10
+❯ curl http://localhost:3000/todos                         
+[{"_id":"6ab77bcd48074ef3a99df8a3","text":"Write code","done":true},{"_id":"6ab77bcd48074ef3a99df8a4","text":"Learn about containers","done":false},{"_id":"6ab77cb7ef33833b349df8a3","text":"Use mongo CLI","done":true}]%                                                                                          

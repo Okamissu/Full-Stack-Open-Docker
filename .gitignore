@@ -1,5 +1,4 @@
 node_modules/
-chapter3/
 .env
 
 todo-app/redis_data/

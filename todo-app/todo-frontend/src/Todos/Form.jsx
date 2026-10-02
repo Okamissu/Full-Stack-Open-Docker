@@ -26,7 +26,15 @@ const TodoForm = ({ createTodo }) => {
         padding: '0 0.5em',
       }}
     >
-      <input type="text" name="text" value={text} onChange={onChange} />
+      <input
+        type="text"
+        name="text"
+        value={text}
+        onChange={onChange}
+        style={{
+          flexGrow: 1,
+        }}
+      />
       <button type="submit"> Submit </button>
     </form>
   );

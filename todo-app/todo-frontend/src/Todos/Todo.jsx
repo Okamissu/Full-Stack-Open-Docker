@@ -23,8 +23,12 @@ const Todo = ({ todo, deleteTodo, completeTodo }) => {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
         maxWidth: '70%',
-        margin: 'auto',
+        margin: '1em auto',
+        border: '1px solid black',
+        borderRadius: '0.75em',
+        padding: '0.5em',
       }}
     >
       <span>{todo.text}</span>

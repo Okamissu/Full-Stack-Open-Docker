@@ -1,23 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const TodoForm = ({ createTodo }) => {
-  const [text, setText] = useState('')
+  const [text, setText] = useState('');
 
   const onChange = ({ target }) => {
-    setText(target.value)
-  }
+    setText(target.value);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    createTodo({ text })
-  }
+    e.preventDefault();
+    createTodo({ text });
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        maxWidth: '70%',
+        margin: '1em auto',
+        border: '1px solid black',
+        borderRadius: '0.75em',
+        padding: '0 0.5em',
+      }}
+    >
       <input type="text" name="text" value={text} onChange={onChange} />
       <button type="submit"> Submit </button>
     </form>
-  )
-}
+  );
+};
 
-export default TodoForm
+export default TodoForm;
